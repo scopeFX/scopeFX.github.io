@@ -1,1 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=Dancing+Script');
+@import url('https://fonts.googleapis.com/css?family=Sofia');
+
+body {
+    font-family: 'Sofia';
+    font-size: 22px;
+}
