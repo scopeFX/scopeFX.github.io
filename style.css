@@ -6,3 +6,132 @@
   background-size: 90%;
   background-image: "images/background.png";
 }
+
+.wrapper {
+  /* The height needs to be set to a fixed value for the effect to work.
+   * 100vh is the full height of the viewport. */
+  height: 100vh;
+  /* The scaling of the images would add a horizontal scrollbar, so disable x overflow. */
+  overflow-x: hidden;
+  /* Enable scrolling on the page. */
+  overflow-y: auto;
+  /* Set the perspective to 2px. This is essentailly the simulated distance from the viewport to transformed objects.*/
+  perspective: 2px;
+}
+
+.section {
+  /* Needed for children to be absolutely positioned relative to the parent. */
+  position: relative;
+  /* The height of the container. Must be set, but it doesn't really matter what the value is. */
+  height: 100vh;
+
+  /* For text formatting. */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-shadow: 0 0 5px #000;
+}
+
+.antiselect {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select:none; user-select:none;
+  -o-user-select:none;
+}
+
+.parallax::after {
+  /* Display and position the pseudo-element */
+  content: " ";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  /* Move the pseudo-element back away from the camera,
+   * then scale it back up to fill the viewport.
+   * Because the pseudo-element is further away, it appears to move more slowly, like in real life. */
+  transform: translateZ(-1px) scale(1.5);
+  /* Force the background image to fill the whole element. */
+  background-size: 100%;
+  /* Keep the image from overlapping sibling elements. */
+  z-index: -1;
+}
+
+/* The styling for the static div. */
+.static {
+  /*background: rgb(40,43,48);*/
+  color: white;
+  background-image: url('images/carbon_background.jpg');
+}
+
+/* Sets the actual background images to adorable kitties. This part is crucial. */
+.bg1::after {
+  background-image: url('images/background.png');
+}
+
+.bg2::after {
+  background-image: url('images/background.png');
+}
+
+.line {
+    color: white;
+    height: 2px;
+}
+
+.banner {
+  height: 200px;
+  width:800px;
+  background-color: #fff;
+  margin: auto;
+  margin-bottom: auto;
+}
+
+.banneranim {
+  animation: banner_hover 6s infinite;
+  animation-timing-function: linear;
+}
+
+.textanim {
+  animation: text_hover 5s infinite;
+  animation-timing-function: linear;
+}
+.bannerspacer {
+  height: 250px;
+}
+
+.bannertext {
+  color: rgb(10,10,10);
+  font-family: 'Thasadith';
+  font-size: 150;
+  text-align: center;
+  transform: translate(0vw, -6vh);
+  text-shadow: 1px 1px 2px rgb(56,30,255);
+}
+
+.arrow {
+  filter: invert(100%);
+  transform: scale(0.1);
+  animation: arrow_hover 2s infinite;
+}
+
+.arrow_spacer {
+}
+@keyframes banner_hover {
+  0%    { transform: translate(0vw, 0vh)    }
+  50%   { transform: translate(0vw, 0.75vh) }
+  100%  { transform: translate(0vw, 0vh)    }
+}
+
+@keyframes text_hover {
+  0%    { transform: translate(0vw, -3vh)    }
+  50%   { transform: translate(0vw, -3.50vh) }
+  100%  { transform: translate(0vw, -3vh)    }
+}
+
+@keyframes arrow_hover {
+  0%    { transform: translate(0vw, 1vh)   }
+  80%   { transform: translate(0vw, 0.1vh) }
+  100%  { transform: translate(0vw, 1vh)   }
+}
